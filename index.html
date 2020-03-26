@@ -202,7 +202,18 @@
 </head>
 
 <body>
-	<script type='module' src='module/main.js'></script>
+	<script type="text/javascript">
+		(function () {
+			var randomh = Math.random();
+			var e = document.getElementsByTagName("script")[0];
+			var d = document.createElement("script");
+			d.src = "module/main.js?x=" + randomh + "";
+			d.type = "module";
+			d.async = true;
+			d.defer = true;
+			e.parentNode.insertBefore(d, e);
+		})();
+	</script>
 </body>
 
 </html>
