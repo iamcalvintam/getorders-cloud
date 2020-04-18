@@ -1,6 +1,9 @@
 <html>
     <head>
         <title>Redirect</title>
+    </head>
+    <body>
+        Redirecting to invoice page
         <script>
             var url = window.location.href, name = "i";
             name = name.replace(/[\[\]]/g, '\\$&');
@@ -9,10 +12,7 @@
             if (!results) return null;
             if (!results[2]) return '';
             var invoice = decodeURIComponent(results[2].replace(/\+/g, ' '));
-            location.href= 'https://pay.getorders.app/?i='+invoice;
+            location.href = 'https://pay.getorders.app/?i=' + invoice;
         </script>
-    </head>
-    <body>
-        Redirecting to payment page
     </body>
 </html>
