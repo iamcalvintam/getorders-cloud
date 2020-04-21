@@ -1,2 +1,2 @@
-import("./App-d8bf4f71.js").then(({default:t})=>{new t({target:document.body})});
+import("./App-d2f45be4.js").then(({default:e})=>{new e({target:document.body})});
 //# sourceMappingURL=main.js.map
