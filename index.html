@@ -1,247 +1,252 @@
 <!DOCTYPE html>
 <html class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GetOrders &middot; Supercharged Services for Businesses</title>
+    <link
+      href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.2/js/all.js"
+      data-auto-replace-svg="nest"
+    ></script>
+    <style>
+      .screen-height {
+        height: 90vh;
+      }
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>GetOrders &middot; Supercharged Services for Businesses</title>
-	<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://pagecdn.io/lib/font-awesome/5.10.0-11/css/all.min.css"
-		integrity="sha256-p9TTWD+813MlLaxMXMbTA7wN/ArzGyW/L7c5+KkjOkM=" crossorigin="anonymous">
-	<style>
-		.screen-height {
-			height: 90vh;
-		}
+      .screen-height-xs {
+        height: 90vh;
+      }
 
-		.screen-height-xs {
-			height: 90vh;
-		}
+      .bg-theme {
+        background: #ff4500;
+      }
 
-		.bg-theme {
-			background: #ff4500;
-		}
+      .text-theme {
+        color: #ff4500;
+      }
 
-		.text-theme {
-			color: #ff4500;
-		}
+      .bg-dark {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
 
-		.bg-dark {
-			background-color: rgba(0, 0, 0, 0.8);
-		}
+      .bg-light {
+        background-color: rgba(255, 255, 255, 0.8);
+      }
 
-		.bg-light {
-			background-color: rgba(255, 255, 255, 0.8);
-		}
+      .pace {
+        -webkit-pointer-events: none;
+        pointer-events: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
 
-		.pace {
-			-webkit-pointer-events: none;
-			pointer-events: none;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			user-select: none;
-		}
+      .pace-inactive {
+        display: none;
+      }
 
-		.pace-inactive {
-			display: none;
-		}
+      .pace .pace-progress {
+        background: #29d;
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: 100%;
+        width: 100%;
+        height: 2px;
+      }
 
-		.pace .pace-progress {
-			background: #29d;
-			position: fixed;
-			z-index: 2000;
-			top: 0;
-			right: 100%;
-			width: 100%;
-			height: 2px;
-		}
+      .pace .pace-progress-inner {
+        display: block;
+        position: absolute;
+        right: 0px;
+        width: 100px;
+        height: 100%;
+        box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+        opacity: 1;
+        -webkit-transform: rotate(3deg) translate(0px, -4px);
+        -moz-transform: rotate(3deg) translate(0px, -4px);
+        -ms-transform: rotate(3deg) translate(0px, -4px);
+        -o-transform: rotate(3deg) translate(0px, -4px);
+        transform: rotate(3deg) translate(0px, -4px);
+      }
 
-		.pace .pace-progress-inner {
-			display: block;
-			position: absolute;
-			right: 0px;
-			width: 100px;
-			height: 100%;
-			box-shadow: 0 0 10px #29d, 0 0 5px #29d;
-			opacity: 1.0;
-			-webkit-transform: rotate(3deg) translate(0px, -4px);
-			-moz-transform: rotate(3deg) translate(0px, -4px);
-			-ms-transform: rotate(3deg) translate(0px, -4px);
-			-o-transform: rotate(3deg) translate(0px, -4px);
-			transform: rotate(3deg) translate(0px, -4px);
-		}
+      .pace .pace-activity {
+        display: block;
+        position: fixed;
+        z-index: 2000;
+        top: 15px;
+        right: 15px;
+        width: 14px;
+        height: 14px;
+        border: solid 2px transparent;
+        border-top-color: #29d;
+        border-left-color: #29d;
+        border-radius: 10px;
+        -webkit-animation: pace-spinner 400ms linear infinite;
+        -moz-animation: pace-spinner 400ms linear infinite;
+        -ms-animation: pace-spinner 400ms linear infinite;
+        -o-animation: pace-spinner 400ms linear infinite;
+        animation: pace-spinner 400ms linear infinite;
+      }
 
-		.pace .pace-activity {
-			display: block;
-			position: fixed;
-			z-index: 2000;
-			top: 15px;
-			right: 15px;
-			width: 14px;
-			height: 14px;
-			border: solid 2px transparent;
-			border-top-color: #29d;
-			border-left-color: #29d;
-			border-radius: 10px;
-			-webkit-animation: pace-spinner 400ms linear infinite;
-			-moz-animation: pace-spinner 400ms linear infinite;
-			-ms-animation: pace-spinner 400ms linear infinite;
-			-o-animation: pace-spinner 400ms linear infinite;
-			animation: pace-spinner 400ms linear infinite;
-		}
+      @-webkit-keyframes pace-spinner {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
 
-		@-webkit-keyframes pace-spinner {
-			0% {
-				-webkit-transform: rotate(0deg);
-				transform: rotate(0deg);
-			}
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
 
-			100% {
-				-webkit-transform: rotate(360deg);
-				transform: rotate(360deg);
-			}
-		}
+      @-moz-keyframes pace-spinner {
+        0% {
+          -moz-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
 
-		@-moz-keyframes pace-spinner {
-			0% {
-				-moz-transform: rotate(0deg);
-				transform: rotate(0deg);
-			}
+        100% {
+          -moz-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
 
-			100% {
-				-moz-transform: rotate(360deg);
-				transform: rotate(360deg);
-			}
-		}
+      @-o-keyframes pace-spinner {
+        0% {
+          -o-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
 
-		@-o-keyframes pace-spinner {
-			0% {
-				-o-transform: rotate(0deg);
-				transform: rotate(0deg);
-			}
+        100% {
+          -o-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
 
-			100% {
-				-o-transform: rotate(360deg);
-				transform: rotate(360deg);
-			}
-		}
+      @-ms-keyframes pace-spinner {
+        0% {
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
 
-		@-ms-keyframes pace-spinner {
-			0% {
-				-ms-transform: rotate(0deg);
-				transform: rotate(0deg);
-			}
+        100% {
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
 
-			100% {
-				-ms-transform: rotate(360deg);
-				transform: rotate(360deg);
-			}
-		}
+      @keyframes pace-spinner {
+        0% {
+          transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
 
-		@keyframes pace-spinner {
-			0% {
-				transform: rotate(0deg);
-				transform: rotate(0deg);
-			}
+        100% {
+          transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
 
-			100% {
-				transform: rotate(360deg);
-				transform: rotate(360deg);
-			}
-		}
+      .bg-dark {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
 
+      html,
+      body {
+        font-family: "Open Sans", sans-serif;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        margin: 0;
+        padding: 0;
+        position: fixed;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        max-height: 100%;
+        text-rendering: optimizeLegibility;
+        overflow: hidden;
+        touch-action: manipulation;
+        -webkit-user-drag: none;
+        -ms-content-zooming: none;
+        word-wrap: break-word;
+        overscroll-behavior-y: none;
+        -webkit-text-size-adjust: none;
+        -moz-text-size-adjust: none;
+        -ms-text-size-adjust: none;
+        text-size-adjust: none;
+      }
 
-		.bg-dark {
-			background-color: rgba(0, 0, 0, 0.8);
-		}
+      .scrollbar-none {
+        scrollbar-width: none;
+      }
 
-		html,
-		body {
-			font-family: "Open Sans", sans-serif;
-			-moz-osx-font-smoothing: grayscale;
-			-webkit-font-smoothing: antialiased;
-			margin: 0;
-			padding: 0;
-			position: fixed;
-			width: 100%;
-			max-width: 100%;
-			height: 100%;
-			max-height: 100%;
-			text-rendering: optimizeLegibility;
-			overflow: hidden;
-			touch-action: manipulation;
-			-webkit-user-drag: none;
-			-ms-content-zooming: none;
-			word-wrap: break-word;
-			overscroll-behavior-y: none;
-			-webkit-text-size-adjust: none;
-			-moz-text-size-adjust: none;
-			-ms-text-size-adjust: none;
-			text-size-adjust: none;
-		}
+      .scrollbar-none::-webkit-scrollbar {
+        display: none !important;
+      }
 
-		.scrollbar-none {
-		scrollbar-width: none
-		}
+      .scrollbar-w-2::-webkit-scrollbar {
+        width: 0.5rem !important;
+        height: 0.5rem !important;
+      }
 
-		.scrollbar-none::-webkit-scrollbar {
-		display: none !important
-		}
+      .scrollbar-track-gray-lighter::-webkit-scrollbar-track {
+        background-color: #e2e8f0 !important;
+      }
 
-		.scrollbar-w-2::-webkit-scrollbar {
-		width: .5rem !important;
-		height: .5rem !important
-		}
+      .scrollbar-thumb-gray::-webkit-scrollbar-thumb {
+        background-color: #b9c2cc !important;
+      }
 
-		.scrollbar-track-gray-lighter::-webkit-scrollbar-track {
-		background-color: #e2e8f0 !important
-		}
+      .scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
+        border-radius: 0.25rem !important;
+      }
 
-		.scrollbar-thumb-gray::-webkit-scrollbar-thumb {
-		background-color: #b9c2cc !important
-		}
+      .bounce:active {
+        transform: scale(0.95);
+      }
 
-		.scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
-		border-radius: .25rem !important
-		}
+      .list-item:active {
+        background: #c3c3c3;
+      }
 
-		.bounce:active {
-			transform: scale(0.95);
-		}
+      button:active {
+        transform: scale(0.95);
+      }
 
-		.list-item:active {
-			background: #c3c3c3;
-		}
+      .qty {
+        text-align: center;
+        font-weight: bold;
+        font-size: 23px;
+        width: 100px;
+      }
+    </style>
+  </head>
 
-		button:active {
-			transform: scale(0.95);
-		}
-
-		.qty {
-			text-align: center;
-			font-weight: bold;
-			font-size: 23px;
-			width: 100px;
-		}
-	</style>
-</head>
-
-<body>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<script type="text/javascript">
-		(function () {
-			var randomh = Math.random();
-			var e = document.getElementsByTagName("script")[0];
-			var d = document.createElement("script");
-			d.src = "module/main.js?x=" + randomh + "";
-			d.type = "module";
-			d.async = true;
-			d.defer = true;
-			e.parentNode.insertBefore(d, e);
-		})();
-	</script>
-</body>
-
+  <body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+      (function () {
+        var randomh = Math.random();
+        var e = document.getElementsByTagName("script")[0];
+        var d = document.createElement("script");
+        d.src = "module/main.js?x=" + randomh + "";
+        d.type = "module";
+        d.async = true;
+        d.defer = true;
+        e.parentNode.insertBefore(d, e);
+      })();
+    </script>
+  </body>
 </html>
